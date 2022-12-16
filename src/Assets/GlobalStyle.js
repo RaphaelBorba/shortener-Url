@@ -19,7 +19,6 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
         vertical-align: baseline;
     }
     /* HTML5 display-role reset for older browsers */
@@ -44,5 +43,14 @@ export const GlobalStyle = createGlobalStyle`
     table {
         border-collapse: collapse;
         border-spacing: 0;
+    }
+
+    *{
+        box-sizing: border-box;
+        font-family: 'Lexend Deca', sans-serif;
+    }
+    body{
+        width: 1400px;
+        margin: 0 auto;
     }
 `;
