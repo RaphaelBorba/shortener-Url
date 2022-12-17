@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { useAuth } from "../Provider/auth";
+import logo from '../Assets/Images/Logo.png'
 
 
 export default function Header() {
@@ -9,41 +10,47 @@ export default function Header() {
     return (
         <HeaderTag>
             {(!name) ?
-                <>
-                    <nav>
+                <article>
+                    <div>
                         <Text color="green"></Text>
-                    </nav>
+                    </div>
                     <div>
                         <Text color="green">Entrar</Text>
-                        <Text>Cadastrar-se</Text>
+                        <Text>Cadastrar-se &#127942;</Text>
                     </div>
-                </>
+                </article>
                 :
-                <>
-                    <nav>
+                <article>
+                    <div>
                         <Text color="green">Seja bem-vindo(a), {name}</Text>
-                    </nav>
+                    </div>
                     <div>
                         <Text>Home</Text>
                         <Text>Ranking</Text>
                         <Text>Sair</Text>
                     </div>
-                </>}
+                </article>}
+
+                <img src={logo} alt={logo} />
         </HeaderTag>
     )
 }
 
 const HeaderTag = styled.header`
 
+    position: relative;
     width: 100%;
-    border: 1px solid black;
-    height: 90px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 100px 10px 100px;
-    align-items: flex-end;
+    height: 150px;
     font-weight: 400;
     font-size: 18px;
+
+    article{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 90px;
+        padding: 0 100px 10px 100px;
+    }
 
     div{
         display: flex;
@@ -54,6 +61,15 @@ const HeaderTag = styled.header`
     }
     div span:hover{
         text-decoration: underline;
+    }
+    img{
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top: 130px;
+        left: 0;    
+        right: 0;
+        
     }
 
 `;
