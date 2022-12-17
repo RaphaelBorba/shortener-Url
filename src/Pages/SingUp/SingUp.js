@@ -1,13 +1,16 @@
 import { useState } from "react";
-import styled from "styled-components";
 import Input from "../../Components/Input";
+import { SingForm } from "../Sing_in/Sing_in";
 
 
-export default function SingIn(){
+
+export default function SingUp() {
 
     const [form, setForm] = useState({
+        name: '',
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     })
 
     function handleForm(e) {
@@ -22,25 +25,18 @@ export default function SingIn(){
         console.log('asdasd')
     }
 
-    return(
+    return (
 
         <SingForm onSubmit={handleSubmit}>
 
+            <Input id='name' placeH='Nome' handleForm={handleForm} type='text' />
             <Input id='email' placeH='E-mail' handleForm={handleForm} type='email' />
             <Input id='password' placeH='Senha' handleForm={handleForm} type='password' />
-            <Input type='submit' text='Entrar'/>
+            <Input id='confirmPassword' placeH='Confirmar senha' handleForm={handleForm} type='password' />
+
+            <Input type='submit' text='Criar Conta' />
 
         </SingForm>
+
     );
 }
-
-
-export const SingForm = styled.form`
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-
-
-`;
