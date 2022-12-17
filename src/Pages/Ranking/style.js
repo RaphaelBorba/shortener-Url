@@ -11,10 +11,6 @@ export const RankingPage = styled.main`
     h1{
         font-size: 30px;
     }
-
-    div{
-        
-    }
 `;
 
 export const Table = styled.div`
