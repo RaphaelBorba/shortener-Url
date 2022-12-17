@@ -1,11 +1,14 @@
 import styled from "styled-components"
 import { useAuth } from "../Provider/auth";
 import logo from '../Assets/Images/Logo.png'
+import { useNavigate } from "react-router-dom";
 
 
 export default function Header() {
 
     const { name } = useAuth()
+
+    const navigate = useNavigate()
 
     return (
         <HeaderTag>
@@ -15,8 +18,8 @@ export default function Header() {
                         <Text color="green"></Text>
                     </div>
                     <div>
-                        <Text color="green">Entrar</Text>
-                        <Text>Cadastrar-se &#127942;</Text>
+                        <Text color="green" onClick={()=>navigate('/sing_in')}>Entrar</Text>
+                        <Text onClick={()=>navigate('/sing_up')}>Cadastrar-se</Text>
                     </div>
                 </article>
                 :
@@ -25,8 +28,8 @@ export default function Header() {
                         <Text color="green">Seja bem-vindo(a), {name}</Text>
                     </div>
                     <div>
-                        <Text>Home</Text>
-                        <Text>Ranking</Text>
+                        <Text onClick={()=>navigate('/')}>Home</Text>
+                        <Text onClick={()=>navigate('/')}>Ranking</Text>
                         <Text>Sair</Text>
                     </div>
                 </article>}
@@ -43,6 +46,7 @@ const HeaderTag = styled.header`
     height: 150px;
     font-weight: 400;
     font-size: 18px;
+    padding-bottom: 300px;
 
     article{
         display: flex;
