@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../../Components/Input";
+import { postSingUp } from "../../Server/UrlsConnect";
 import { SingForm } from "../Sing_in/Sing_in";
 
 
 
 export default function SingUp() {
+
+    const navigate = useNavigate()
 
     const [form, setForm] = useState({
         name: '',
@@ -16,13 +20,22 @@ export default function SingUp() {
     function handleForm(e) {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
-        console.log(form)
     }
 
     function handleSubmit(e){
         e.preventDefault()
 
-        console.log('asdasd')
+        if(form.password !== form.confirmPassword){
+            alert('Senhas diferentes!')
+            return
+        }
+
+        postSingUp('/sing_up', {name: form.name, email: form.email, password:form.password})
+        .then((e)=>{
+
+            navigate('/sing_in')
+
+        }).catch(e=>console.log(e.response.data))
     }
 
     return (

@@ -7,3 +7,9 @@ export function postSingIn(path, body){
     const promise = axios.post(`${urlAxios}${path}`, body)
     return promise
 }
+
+export function postSingUp(path, body){
+    
+    const promise = axios.post(`${urlAxios}${path}`, body)
+    return promise
+}
