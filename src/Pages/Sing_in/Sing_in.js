@@ -1,6 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Input from "../../Components/Input";
+import { postSingIn } from "../../Server/UrlsConnect";
+import { useAuth } from "../../Provider/auth";
+import { useNavigate } from "react-router-dom";
 
 
 export default function SingIn(){
@@ -9,6 +12,10 @@ export default function SingIn(){
         email: '',
         password: ''
     })
+
+    const navigate = useNavigate()
+
+    const {setUser} = useAuth()
 
     function handleForm(e) {
         const { name, value } = e.target
@@ -19,7 +26,14 @@ export default function SingIn(){
     function handleSubmit(e){
         e.preventDefault()
 
-        console.log('asdasd')
+        postSingIn('/sing_in', {email: form.email, password: form.password})
+        .then((e)=>{
+
+            setUser(e.data)
+            navigate('/')
+
+        })
+        .catch(e=>console.log(e.response.data))
     }
 
     return(

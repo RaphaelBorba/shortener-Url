@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
 
-    const { name } = useAuth()
+    const { user } = useAuth()
 
     const navigate = useNavigate()
 
     return (
         <HeaderTag>
-            {(!name) ?
+            {(!user.name) ?
                 <article>
                     <div>
                         <Text color="green"></Text>
@@ -25,7 +25,7 @@ export default function Header() {
                 :
                 <article>
                     <div>
-                        <Text color="green">Seja bem-vindo(a), {name}</Text>
+                        <Text color="green">Seja bem-vindo(a), {user.name}</Text>
                     </div>
                     <div>
                         <Text onClick={()=>navigate('/')}>Home</Text>
