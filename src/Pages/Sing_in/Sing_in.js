@@ -20,20 +20,19 @@ export default function SingIn(){
     function handleForm(e) {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
-        console.log(form)
     }
 
     function handleSubmit(e){
         e.preventDefault()
 
-        postSingIn('/sing_in', {email: form.email, password: form.password})
+        postSingIn('/singIn', {email: form.email, password: form.password})
         .then((e)=>{
 
             setUser(e.data)
             navigate('/')
 
         })
-        .catch(e=>console.log(e.response.data))
+        .catch(e=>alert("Informações erradas!"))
     }
 
     return(

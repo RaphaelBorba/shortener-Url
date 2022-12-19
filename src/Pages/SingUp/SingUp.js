@@ -30,12 +30,12 @@ export default function SingUp() {
             return
         }
 
-        postSingUp('/sing_up', {name: form.name, email: form.email, password:form.password})
+        postSingUp('/singUp', {name: form.name, email: form.email, password:form.password})
         .then((e)=>{
 
             navigate('/sing_in')
 
-        }).catch(e=>console.log(e.response.data))
+        }).catch(e=>alert(e.response.data))
     }
 
     return (

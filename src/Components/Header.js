@@ -6,9 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
 
-    const { user } = useAuth()
+    const { user, setUser } = useAuth()
 
     const navigate = useNavigate()
+
+    function logOut(){
+
+        const confirm = window.confirm('Deseja sair?')
+        
+        if(confirm){
+            setUser({})
+            navigate('/sing_in')
+        }
+    }
 
     return (
         <HeaderTag>
@@ -30,7 +40,7 @@ export default function Header() {
                     <div>
                         <Text onClick={()=>navigate('/')}>Home</Text>
                         <Text onClick={()=>navigate('/')}>Ranking</Text>
-                        <Text>Sair</Text>
+                        <Text onClick={logOut}>Sair</Text>
                     </div>
                 </article>}
 
