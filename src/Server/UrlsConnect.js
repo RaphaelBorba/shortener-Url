@@ -19,3 +19,14 @@ export function getRanking(){
     const promise = axios.get(`${urlAxios}/ranking`)
     return promise
 }
+
+export function getUser(token){
+    
+    const promise = axios.get(`${urlAxios}/users/me`, {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
+
+      return promise
+}

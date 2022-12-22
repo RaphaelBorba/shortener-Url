@@ -38,7 +38,7 @@ export default function Header() {
                         <Text color="green">Seja bem-vindo(a), {user.name}</Text>
                     </div>
                     <div>
-                        <Text onClick={()=>navigate('/')}>Home</Text>
+                        <Text onClick={()=>navigate('/home')}>Home</Text>
                         <Text onClick={()=>navigate('/')}>Ranking</Text>
                         <Text onClick={logOut}>Sair</Text>
                     </div>
