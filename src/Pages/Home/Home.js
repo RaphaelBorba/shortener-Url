@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Provider/auth";
-import { getUser } from "../../Server/UrlsConnect";
+import { getUser, postUrl } from "../../Server/UrlsConnect";
 import { HomePage, UrlBoard } from "./styled";
 import Input from "../../Components/Input";
 import Url from "../../Components/Url";
@@ -35,7 +35,10 @@ export default function Home() {
     function handleSubmit(e) {
         e.preventDefault()
 
-        console.log(form)
+        postUrl(form, user.token).then(e=>{
+            setRefresh(!refresh)
+            setForm({url:''})
+        }).catch(e=>alert(e.response.data))
     }
 
     return (

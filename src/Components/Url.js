@@ -19,10 +19,14 @@ export default function Url({link, shortLink, visitCount, id, refresh, setRefres
         }
 
     }
+    function redirectUrl(){
+
+        window.open(link)
+    }
 
     return (
         <Urlcss>
-            <article>
+            <article onClick={redirectUrl}>
 
                 <p>{link}</p>
                 <span>{shortLink}</span>
