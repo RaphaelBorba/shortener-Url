@@ -26,9 +26,9 @@ export default function Url({link, shortLink, visitCount, id, refresh, setRefres
 
     return (
         <Urlcss>
-            <article onClick={redirectUrl}>
+            <article>
 
-                <p>{link}</p>
+                <p onClick={redirectUrl} >{link}</p>
                 <span>{shortLink}</span>
                 <span>Quantidade de visitantes: {visitCount}</span>
 
@@ -61,6 +61,7 @@ const Urlcss = styled.li`
         color: white;
         
         
+        
 
 
         p{
@@ -68,6 +69,7 @@ const Urlcss = styled.li`
             overflow: hidden;
             text-overflow: ellipsis;
             width: 300px;
+            cursor: pointer;
         }
     }
     div{

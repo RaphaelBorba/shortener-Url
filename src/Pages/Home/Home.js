@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Provider/auth";
-import { getUser, postUrl } from "../../Server/UrlsConnect";
+import { getUser, postUrl, urlAxios } from "../../Server/UrlsConnect";
 import { HomePage, UrlBoard } from "./styled";
 import Input from "../../Components/Input";
 import Url from "../../Components/Url";
@@ -25,6 +25,7 @@ export default function Home() {
         getUser(user.token).then(e => {
             
             setUserData(e.data)
+            console.log(e.data)
 
         }).catch(e => {
             alert(e.response.data)
@@ -50,11 +51,14 @@ export default function Home() {
                 <Input type='submit' text='Encurtar link' />
             </form>
 
+            <h1>Envie este link com a url encurtada: {urlAxios}/urls/open/'url encurtada aqui'</h1>
+
             <UrlBoard>
 
                 {(!userData.shortened_urls)?''
                 
-                :userData.shortened_urls.map( (e,i) => <Url key={i} 
+                :(userData.shortened_urls[0]===null)?'':
+                userData.shortened_urls.map( (e,i) => <Url key={i} 
                 setRefresh={setRefresh} 
                 refresh={refresh} 
                 id={e.id} 

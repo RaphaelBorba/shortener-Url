@@ -6,6 +6,10 @@ export const HomePage = styled.main`
         display: flex;
         justify-content: space-between;
     }
+
+    h1{
+        margin: 20px;
+    }
 `;
 
 export const UrlBoard = styled.ul`

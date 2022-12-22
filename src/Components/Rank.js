@@ -12,6 +12,6 @@ export default function Rank({name, links, visits, position}){
 const Ranks = styled.li`
 
     font-size: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 
 `;

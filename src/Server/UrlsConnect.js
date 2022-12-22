@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlAxios = 'http://localhost:5000'
+export const urlAxios = 'https://api-shortly-arw0.onrender.com'
 
 export function postSingIn(path, body) {
 
