@@ -1,7 +1,24 @@
 import styled from "styled-components";
+import { useAuth } from "../Provider/auth";
+import { deleteUrl } from "../Server/UrlsConnect";
 
 
-export default function Url({link, shortLink, visitCount}) {
+export default function Url({link, shortLink, visitCount, id, refresh, setRefresh}) {
+
+    const {user} = useAuth()
+
+    function DelUrl(){
+
+        const confirm = window.confirm('Deseja deletar a url?')
+
+        if(confirm){
+
+            deleteUrl(id,user.token).then(e=>{
+                setRefresh(!refresh)
+            }).catch(e=>alert(e.response.data))
+        }
+
+    }
 
     return (
         <Urlcss>
@@ -12,7 +29,7 @@ export default function Url({link, shortLink, visitCount}) {
                 <span>Quantidade de visitantes: {visitCount}</span>
 
             </article>
-            <div><ion-icon name="trash-outline"></ion-icon></div>
+            <div onClick={DelUrl}><ion-icon name="trash-outline"></ion-icon></div>
 
         </Urlcss>
     );

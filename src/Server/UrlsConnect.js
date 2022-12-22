@@ -30,3 +30,14 @@ export function getUser(token){
 
       return promise
 }
+
+export function deleteUrl(urlId, token){
+
+    const promise = axios.delete(`${urlAxios}/urls/${urlId}`, {
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
+
+      return promise
+}

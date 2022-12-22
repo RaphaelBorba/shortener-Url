@@ -10,6 +10,7 @@ export default function Home() {
 
     const { user } = useAuth()
     const [userData, setUserData] = useState([])
+    const [refresh, setRefresh] = useState(true)
     const [form, setForm] = useState({
         url: ''
     })
@@ -29,7 +30,7 @@ export default function Home() {
             alert(e.response.data)
         })
         // eslint-disable-next-line
-    }, [])
+    }, [refresh])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -49,7 +50,14 @@ export default function Home() {
             <UrlBoard>
 
                 {(!userData.shortened_urls)?''
-                :userData.shortened_urls.map( (e,i) => <Url key={i} link={e.url} shortLink={e.short_url} visitCount={e.visit_count} />)}
+                
+                :userData.shortened_urls.map( (e,i) => <Url key={i} 
+                setRefresh={setRefresh} 
+                refresh={refresh} 
+                id={e.id} 
+                link={e.url} 
+                shortLink={e.short_url} 
+                visitCount={e.visit_count} />)}
 
             </UrlBoard>
 
