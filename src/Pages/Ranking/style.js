@@ -13,7 +13,7 @@ export const RankingPage = styled.main`
     }
 `;
 
-export const Table = styled.div`
+export const Table = styled.ul`
 
     background: #FFFFFF;
     border: 1px solid rgba(120, 177, 89, 0.25);
@@ -21,4 +21,5 @@ export const Table = styled.div`
     border-radius: 24px 24px 0px 0px;
     width: 80%;
     min-height:300px ;
+    padding: 20px 50px;
 `;
